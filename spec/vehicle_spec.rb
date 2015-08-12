@@ -61,6 +61,17 @@ describe(Vehicle) do
     end
   end
 
+  describe('.find') do
+    it('finds a single vehicle in the Vehicles array') do
+      new_vehicle = Vehicle.new('Kia', 'Spectra', 2005)
+      new_vehicle.save()
+      expect(Vehicle.find(2)).to(eq(nil))
+      new_vehicle2 = Vehicle.new('Chevy', 'Camaro', 1968)
+      new_vehicle2.save()
+      expect(Vehicle.find(2)).to(eq(new_vehicle2))
+    end
+  end
+  
 end
 
 describe(Dealership) do
@@ -81,4 +92,5 @@ describe(Dealership) do
     end
   end
 
+  describe('#save')
 end
