@@ -35,4 +35,9 @@ class Vehicle
     end
   end
 
+  def age
+    current_year = Time.new.year()
+    current_year - @year
+  end
+  
 end

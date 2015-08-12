@@ -43,4 +43,12 @@ describe(Vehicle) do
     end
   end
 
+  describe('#age') do
+    it('returns the age of the vehicle') do
+      new_vehicle = Vehicle.new('Kia', 'Spectra', 2005)
+      new_vehicle.save()
+      expect(new_vehicle.age).to(eq(10))
+    end
+  end
+
 end
