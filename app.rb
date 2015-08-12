@@ -13,3 +13,4 @@ end
 
 get('/vehicles') do
   @vehicle
+end

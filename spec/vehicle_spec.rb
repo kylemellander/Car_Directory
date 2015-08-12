@@ -94,6 +94,7 @@ describe(Vehicle) do
       new_vehicle2 = Vehicle.new('Chevy', 'Camaro', 1968, "red")
       new_vehicle2.save()
       expect(new_vehicle2.sold()).to(eq(false))
+      expect(Vehicle.available_vehicles()).to(eq([new_vehicle2]))
     end
   end
 end

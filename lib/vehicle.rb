@@ -85,4 +85,14 @@ class Vehicle
     @@vehicles = new_vehicles
   end
 
+  define_singleton_method(:available_vehicles) do
+    available_vehicles = []
+    @@vehicles.each do |vehicle|
+      if vehicle.sold() == false
+        available_vehicles.push(vehicle)
+      end
+    end
+    available_vehicles
+  end
+
 end
