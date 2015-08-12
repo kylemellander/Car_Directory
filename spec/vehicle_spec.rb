@@ -1,5 +1,6 @@
 require('rspec')
 require('vehicle')
+require('dealership')
 
 describe(Vehicle) do
   before() do
@@ -60,4 +61,17 @@ describe(Vehicle) do
     end
   end
 
+end
+
+describe(Dealership) do
+  # before() do
+  #   Dealership.clear
+  # end
+
+  describe("#name") do
+    it("Creates new dealership under Dealership class") do
+      new_dealership = Dealership.new("Bob's Crappy Cars")
+      expect(new_dealership.name()).to(eq("Bob's Crappy Cars"))
+    end
+  end
 end
