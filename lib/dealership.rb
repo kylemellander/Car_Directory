@@ -3,13 +3,14 @@ class Dealership
   @@dealerships = []
   @@id_count = 0
 
-  attr_reader :name, :id, :vehicles
+  attr_reader :name, :id, :vehicles, :sold_cars
 
   def initialize(name)
     @name = name
     @vehicles = []
     @id = @@id_count + 1
     @@id_count += 1
+    @sold_cars = []
   end
 
   define_singleton_method(:all) do
@@ -47,6 +48,20 @@ class Dealership
 
   def add_car(id)
     @vehicles.push(id)
+  end
+
+  def delete_car(id)
+    new_sold_cars = []
+    vehicles_left = []
+    @vehicles.each do |vehicle_id|
+      if vehicle_id == id
+        new_sold_cars.push(vehicle_id)
+      else
+        vehicles_left.push(vehicle_id)
+      end
+    end
+    @vehicles = vehicles_left
+    @sold_cars = new_sold_cars
   end
 
 end

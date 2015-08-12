@@ -151,5 +151,16 @@ describe(Dealership) do
     end
   end
 
+  describe("#delete_car") do
+    it('removes a car from a dealership') do
+      new_dealership = Dealership.new('Kia Motors')
+      new_dealership.save()
+      new_car = Vehicle.new('Honda', 'Civic', 1991, 'blue')
+      new_car.save()
+      new_dealership.add_car(new_car.id())
+      new_dealership.delete_car(new_car.id())
+      expect(new_dealership.vehicles()).to(eq([]))
+    end
+  end
 
 end
