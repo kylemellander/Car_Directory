@@ -1,6 +1,6 @@
 class Dealership
 
-  @@dealership = []
+  @@dealerships = []
   @@id_count = 0
 
   attr_reader :name, :id
@@ -12,9 +12,25 @@ class Dealership
   end
 
   define_singleton_method(:all) do
-    @@dealership
+    @@dealerships
   end
 
-  
+  def save
+    @@dealerships.push(self)
+  end
 
+  define_singleton_method(:clear) do
+    @@dealerships = []
+    @@id_count = 0
+  end
+
+  define_singleton_method(:delete) do |id|
+    new_dealerships = []
+    @@dealerships.each do |dealership|
+      if dealership.id() != id
+        new_dealerships.push(dealership)
+      end
+    end
+    @@dealerships = new_dealerships
+  end
 end

@@ -87,9 +87,9 @@ describe(Vehicle) do
 end
 
 describe(Dealership) do
-  # before() do
-  #   Dealership.clear
-  # end
+  before() do
+    Dealership.clear
+  end
 
   describe("#name") do
     it("Creates new dealership under Dealership class") do
@@ -104,5 +104,30 @@ describe(Dealership) do
     end
   end
 
-  describe('#save')
+  describe('#save') do
+    it('saves a dealership to the dealership array') do
+      new_dealership = Dealership.new('Kia Motors')
+      new_dealership.save()
+      expect(Dealership.all()).to(eq([new_dealership]))
+    end
+  end
+
+  describe('.clear') do
+    it('Clears the entire dealership list') do
+      new_dealership = Dealership.new('Kia Motors')
+      new_dealership.save()
+      Dealership.clear()
+      expect(Dealership.all()).to(eq([]))
+    end
+  end
+
+  describe('.delete') do
+    it('deletes a dealership from the dealership array') do
+      new_dealership = Dealership.new('Kia Motors')
+      new_dealership.save()
+      Dealership.delete(1)
+      expect(Dealership.all()).to(eq([]))
+    end
+  end
+
 end
