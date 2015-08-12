@@ -51,4 +51,13 @@ describe(Vehicle) do
     end
   end
 
+  describe('#worth_buying') do
+    it('returns a true or false on worthiness of vehicle') do
+      new_vehicle = Vehicle.new('Kia', 'Spectra', 2005)
+      expect(new_vehicle.worth_buying()).to(eq(true))
+      new_vehicle2 = Vehicle.new('Chevy', 'Camaro', 1968)
+      expect(new_vehicle2.worth_buying()).to(eq(false))
+    end
+  end
+
 end

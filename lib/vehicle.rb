@@ -39,5 +39,13 @@ class Vehicle
     current_year = Time.new.year()
     current_year - @year
   end
-  
+
+  def worth_buying
+    if age() < 20
+      true
+    else
+      false
+    end
+  end
+
 end
