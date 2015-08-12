@@ -59,4 +59,15 @@ class Vehicle
     found_vehicle
   end
 
+  define_singleton_method(:find_by_color) do |color|
+    color_vehicles = []
+    @@vehicles.each do |vehicle|
+      if vehicle.color() == color
+        color_vehicles.push(vehicle)
+      end
+    end
+    color_vehicles
+  end
+
+
 end

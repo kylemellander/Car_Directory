@@ -73,6 +73,17 @@ describe(Vehicle) do
     end
   end
 
+  describe('.find_by_color') do
+    it('finds all vehicles by color input') do
+      new_vehicle = Vehicle.new('Kia', 'Spectra', 2005, "blue")
+      new_vehicle.save()
+      expect(Vehicle.find_by_color("red")).to(eq([]))
+      new_vehicle2 = Vehicle.new('Chevy', 'Camaro', 1968, "red")
+      new_vehicle2.save()
+      expect(Vehicle.find_by_color("red")).to(eq([new_vehicle2]))
+    end
+  end
+
 end
 
 describe(Dealership) do
