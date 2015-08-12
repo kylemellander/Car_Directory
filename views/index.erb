@@ -36,7 +36,7 @@
   <div class='bk-dealership-list'>
     <ul>
       <% @dealerships.each do |dealership| %>
-      <li class='bk-dealerships'><a href="dealership/<%= dealership.id() %>"><%= dealership.name() %></a></li>
+      <li class='bk-dealerships'><a href="/dealership/<%= dealership.id() %>"><%= dealership.name() %></a></li>
       <% end %>
     </ul>
   </div>
