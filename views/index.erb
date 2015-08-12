@@ -1,0 +1,34 @@
+<div class="col-sm-9 bk-content">
+  <h3>Cars Available</h3>
+  <div class="bk-vehicles-list">
+    <ul>
+      <% @vehicles.each do |vehicle| %>
+        <li class="bk-vehicle"><%= vehicle.year() %> <%= vehicle.make() %> <%= vehicle.model() %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <form id="bk-car-add-form" action='/add_vehicle' method="post">
+    <input type="text" name="make" placeholder='Vehicle Make'>
+    <input type="text" name="model" placeholder='Vehicle Model'>
+    <input type="text" name="year" placeholder='Vehicle Year'>
+    <input type="text" name="color" placeholder='Vehicle Color'>
+    <button name="submit" class='btn-primary btn'>Add</button>
+  </form>
+
+</div>
+<div class="col-sm-3 bk-sidebar">
+  <h3>Dealerships Available</h3>
+  <div class='bk-dealership-list'>
+    <ul>
+      <% @dealerships.each do |dealership| %>
+      <li class='bk-dealerships'><%= dealership.name() %></li>
+      <% end %>
+    </ul>
+  </div>
+  <form id="bk-dealership-add-form" action='/add_dealership' method="post">
+    <input type="text" name="name" placeholder='Dealership Name'>
+    <button name="submit" class='btn-primary btn'>Add</button>
+  </form>
+
+</div>

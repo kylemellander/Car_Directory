@@ -8,6 +8,8 @@ also_reload('/lib/**/*.rb')
 
 
 get('/') do
+  @dealerships = Dealership.all()
+  @vehicles = Vehicle.available_vehicles()
   erb(:index)
 end
 
