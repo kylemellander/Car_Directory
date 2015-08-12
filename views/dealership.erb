@@ -1,4 +1,8 @@
 <div class='col-sm-9 bk-content'>
-<h3></h3>
-
+  <h3><%= @dealership.name() %></h3>
+  <ul>
+    <% @vehicles.each() do |vehicle| %>
+    <li class="bk-vehicle"><%= vehicle.year() %> <%= vehicle.make() %> <%= vehicle.model() %> (<%= vehicle.color() %>)</li>
+    <% end %>
+  </ul>
 </div>

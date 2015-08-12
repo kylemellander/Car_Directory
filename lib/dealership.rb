@@ -69,7 +69,7 @@ class Dealership
     available_vehicles = []
     @vehicles.each do |vehicle_id|
       vehicle = Vehicle.find(vehicle_id)
-      if vehicle.sold() == false
+      if vehicle.sold() == false && vehicle != nil
         available_vehicles.push(vehicle_id)
       end
     end

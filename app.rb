@@ -58,3 +58,15 @@ get('/remove_vehicle/:vehicle_id') do
   @vehicles = Vehicle.available_vehicles()
   erb(:index)
 end
+
+get('/dealership/:dealership_id') do
+  @dealership_id = params.fetch('dealership_id').to_i
+  @dealership = Dealership.find(@dealership_id)
+  @vehicle_ids = @dealership.available_vehicles()
+  @vehicles = []
+  vehicles = @dealership.available_vehicles()
+  vehicles.each do |v|
+    @vehicles.push(Vehicle.find(v))
+  end
+  erb(:dealership)
+end
