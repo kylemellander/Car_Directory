@@ -140,4 +140,16 @@ describe(Dealership) do
     end
   end
 
+  describe('#add_car') do
+    it('adds a car to a single dealership') do
+      new_dealership = Dealership.new('Kia Motors')
+      new_dealership.save()
+      new_car = Vehicle.new('Honda', 'Civic', 1991, 'blue')
+      new_car.save()
+      new_dealership.add_car(new_car.id())
+      expect(new_dealership.vehicles()).to(eq([new_car.id()]))
+    end
+  end
+
+
 end

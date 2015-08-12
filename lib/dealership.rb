@@ -3,10 +3,11 @@ class Dealership
   @@dealerships = []
   @@id_count = 0
 
-  attr_reader :name, :id
+  attr_reader :name, :id, :vehicles
 
   def initialize(name)
     @name = name
+    @vehicles = []
     @id = @@id_count + 1
     @@id_count += 1
   end
@@ -42,6 +43,10 @@ class Dealership
       end
     end
     found_dealership
+  end
+
+  def add_car(id)
+    @vehicles.push(id)
   end
 
 end
