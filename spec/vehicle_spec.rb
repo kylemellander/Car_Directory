@@ -130,4 +130,14 @@ describe(Dealership) do
     end
   end
 
+  describe('.find') do
+    it('finds specific dealership by id') do
+      new_dealership = Dealership.new('Kia Motors')
+      new_dealership.save()
+      new_dealership1 = Dealership.new("Bob's Crappy Cars")
+      new_dealership1.save()
+      expect(Dealership.find(2)).to(eq(new_dealership1))
+    end
+  end
+
 end
