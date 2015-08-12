@@ -20,4 +20,8 @@ class Vehicle
     @@vehicles
   end
 
+  define_singleton_method(:clear) do
+    @@vehicles = []
+  end
+
 end

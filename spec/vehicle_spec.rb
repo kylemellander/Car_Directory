@@ -20,4 +20,15 @@ describe(Vehicle) do
       expect(Vehicle.all()).to(eq([new_vehicle]))
     end
   end
+
+  describe('.clear') do
+    it('clears the vehicle array of all vehicles') do
+      new_vehicle = Vehicle.new('Kia', 'Hatchback', 2005)
+      new_vehicle.save()
+      Vehicle.clear()
+      expect(Vehicle.all()).to(eq([]))
+    end
+  end
+
+  
 end
