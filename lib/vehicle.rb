@@ -2,7 +2,7 @@ class Vehicle
   @@vehicles = []
   @@id_count = 0
 
-  attr_reader :make, :model, :year
+  attr_reader :make, :model, :year, :id
 
   def initialize(make, model, year)
     @make = make
@@ -22,6 +22,17 @@ class Vehicle
 
   define_singleton_method(:clear) do
     @@vehicles = []
+    @@id_count = 0
+  end
+
+  define_singleton_method(:delete) do |id|
+    vehicles_temp = []
+    @@vehicles.each do |vehicle|
+      if vehicle.id() != id
+        vehicles_temp.push(vehicle)
+      end
+    @@vehicles = vehicles_temp
+    end
   end
 
 end

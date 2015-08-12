@@ -1,9 +1,11 @@
 require('rspec')
 require('vehicle')
 
-
-
 describe(Vehicle) do
+  before() do
+    Vehicle.clear()
+  end
+
   describe('#make, #model, #year') do
     it('returns the make, model and year of a vehicle') do
       new_vehicle = Vehicle.new('Kia', 'Hatchback', 2005)
@@ -30,5 +32,15 @@ describe(Vehicle) do
     end
   end
 
-  
+  describe('.delete') do
+    it('deletes a specific vehicle by id') do
+      new_vehicle = Vehicle.new('Kia', 'Spectra', 2005)
+      new_vehicle.save()
+      new_vehicle1 = Vehicle.new('Kia', 'Sedona', 2008)
+      new_vehicle1.save()
+      Vehicle.delete(2)
+      expect(Vehicle.all()).to(eq([new_vehicle]))
+    end
+  end
+
 end
