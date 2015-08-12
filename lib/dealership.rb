@@ -73,7 +73,6 @@ class Dealership
         available_vehicles.push(vehicle_id)
       end
     end
+    available_vehicles
   end
-
-
 end
