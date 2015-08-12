@@ -2,12 +2,13 @@ class Vehicle
   @@vehicles = []
   @@id_count = 0
 
-  attr_reader :make, :model, :year, :id
+  attr_reader :make, :model, :year, :id, :color
 
-  def initialize(make, model, year)
+  def initialize(make, model, year, color)
     @make = make
     @model = model
     @year = year
+    @color = color
     @id = @@id_count + 1
     @@id_count += 1
   end
