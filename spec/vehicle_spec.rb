@@ -84,6 +84,19 @@ describe(Vehicle) do
     end
   end
 
+  describe('.sold') do
+    it('marks car as sold') do
+      new_vehicle = Vehicle.new('Kia', 'Spectra', 2005, "blue")
+      new_vehicle.save()
+      Vehicle.mark_sold(1)
+      expect(new_vehicle.sold()).to(eq(true))
+      new_vehicle2 = Vehicle.new('Chevy', 'Camaro', 1968, "red")
+      new_vehicle2.save()
+      expect(new_vehicle2.sold()).to(eq(false))
+    end
+  end
+
+
 end
 
 describe(Dealership) do
@@ -151,16 +164,19 @@ describe(Dealership) do
     end
   end
 
-  describe("#delete_car") do
+  describe("#sell_car") do
     it('removes a car from a dealership') do
       new_dealership = Dealership.new('Kia Motors')
       new_dealership.save()
       new_car = Vehicle.new('Honda', 'Civic', 1991, 'blue')
       new_car.save()
       new_dealership.add_car(new_car.id())
-      new_dealership.delete_car(new_car.id())
+      new_dealership.sell_car(new_car.id())
       expect(new_dealership.vehicles()).to(eq([]))
     end
   end
+
+
+
 
 end

@@ -2,7 +2,7 @@ class Vehicle
   @@vehicles = []
   @@id_count = 0
 
-  attr_reader :make, :model, :year, :id, :color
+  attr_reader :make, :model, :year, :id, :color, :sold
 
   def initialize(make, model, year, color)
     @make = make
@@ -11,6 +11,7 @@ class Vehicle
     @color = color
     @id = @@id_count + 1
     @@id_count += 1
+    @sold = false
   end
 
   def save
@@ -69,5 +70,19 @@ class Vehicle
     color_vehicles
   end
 
+  def mark_sold_vehicle
+    @sold = true
+  end
+
+  define_singleton_method(:mark_sold)  do |id|
+    new_vehicles = []
+    @@vehicles.each do |vehicle|
+      if vehicle.id() == id
+        vehicle.mark_sold_vehicle()
+      end
+      new_vehicles.push(vehicle)
+    end
+    @@vehicles = new_vehicles
+  end
 
 end

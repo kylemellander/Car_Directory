@@ -50,7 +50,7 @@ class Dealership
     @vehicles.push(id)
   end
 
-  def delete_car(id)
+  def sell_car(id)
     new_sold_cars = []
     vehicles_left = []
     @vehicles.each do |vehicle_id|
