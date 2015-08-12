@@ -11,4 +11,10 @@ class Dealership
     @@id_count += 1
   end
 
+  define_singleton_method(:all) do
+    @@dealership
+  end
+
+  
+
 end

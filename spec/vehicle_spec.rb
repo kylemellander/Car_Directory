@@ -74,4 +74,11 @@ describe(Dealership) do
       expect(new_dealership.name()).to(eq("Bob's Crappy Cars"))
     end
   end
+
+  describe(".all") do
+    it('starts the dealership array empty') do
+      expect(Dealership.all()).to(eq([]))
+    end
+  end
+
 end
