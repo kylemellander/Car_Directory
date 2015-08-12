@@ -74,7 +74,7 @@ class Vehicle
     @sold = true
   end
 
-  define_singleton_method(:mark_sold)  do |id|
+  define_singleton_method(:mark_sold) do |id|
     new_vehicles = []
     @@vehicles.each do |vehicle|
       if vehicle.id() == id

@@ -62,6 +62,7 @@ class Dealership
     end
     @vehicles = vehicles_left
     @sold_cars = new_sold_cars
+    Vehicle.mark_sold(id)
   end
 
 end

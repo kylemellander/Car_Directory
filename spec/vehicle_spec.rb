@@ -1,6 +1,7 @@
 require('rspec')
 require('vehicle')
 require('dealership')
+require('pry')
 
 describe(Vehicle) do
   before() do
@@ -95,8 +96,6 @@ describe(Vehicle) do
       expect(new_vehicle2.sold()).to(eq(false))
     end
   end
-
-
 end
 
 describe(Dealership) do
@@ -174,9 +173,14 @@ describe(Dealership) do
       new_dealership.sell_car(new_car.id())
       expect(new_dealership.vehicles()).to(eq([]))
     end
+    it('marks a car as sold when it is sold from the dealership') do
+      new_dealership = Dealership.new('Kia Motors')
+      new_dealership.save()
+      new_car = Vehicle.new('Honda', 'Civic', 1991, 'blue')
+      new_car.save()
+      new_dealership.add_car(new_car.id())
+      new_dealership.sell_car(new_car.id())
+      expect(new_car.sold()).to(eq(true))
+    end
   end
-
-
-
-
 end
