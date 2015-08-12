@@ -183,4 +183,19 @@ describe(Dealership) do
       expect(new_car.sold()).to(eq(true))
     end
   end
+
+  describe("#available_vehicles") do
+    it("displays all vehicles not sold") do
+      new_dealership = Dealership.new('Kia Motors')
+      new_dealership.save()
+      new_car = Vehicle.new('Honda', 'Civic', 1991, 'blue')
+      new_car.save()
+      new_car2 = Vehicle.new('Honda', 'Accord', 2091, 'rainbow')
+      new_car2.save()
+      new_dealership.add_car(new_car.id())
+      new_dealership.add_car(new_car2.id())
+      new_dealership.sell_car(new_car.id())
+      expect(new_dealership.available_vehicles()).to(eq([new_car2.id()]))
+    end
+  end
 end

@@ -65,4 +65,15 @@ class Dealership
     Vehicle.mark_sold(id)
   end
 
+  def available_vehicles
+    available_vehicles = []
+    @vehicles.each do |vehicle_id|
+      vehicle = Vehicle.find(vehicle_id)
+      if vehicle.sold() == false
+        available_vehicles.push(vehicle_id)
+      end
+    end
+  end
+
+
 end
