@@ -159,8 +159,12 @@ describe(Dealership) do
       new_dealership.save()
       new_car = Vehicle.new('Honda', 'Civic', 1991, 'blue')
       new_car.save()
+      new_car2 = Vehicle.new('Honda', 'Civic', 1991, 'blue')
+      new_car2.save()
       new_dealership.add_car(new_car.id())
       expect(new_dealership.vehicles()).to(eq([new_car.id()]))
+      expect(new_car.dealer_assigned()).to(eq(true))
+      expect(new_car2.dealer_assigned()).to(eq(false))
     end
   end
 

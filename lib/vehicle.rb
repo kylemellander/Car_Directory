@@ -2,7 +2,7 @@ class Vehicle
   @@vehicles = []
   @@id_count = 0
 
-  attr_reader :make, :model, :year, :id, :color, :sold
+  attr_reader :make, :model, :year, :id, :color, :sold, :dealership
 
   def initialize(make, model, year, color)
     @make = make
@@ -12,6 +12,7 @@ class Vehicle
     @id = @@id_count + 1
     @@id_count += 1
     @sold = false
+    @dealership = nil
   end
 
   def save
@@ -95,4 +96,14 @@ class Vehicle
     available_vehicles
   end
 
+  def dealer_assigned
+    assigned_vehicle = false
+    Dealership.all().each do |dealership|
+      if dealership.vehicles().include?(@id)
+        assigned_vehicle = true
+        @dealership = dealership.name()
+      end
+    end
+    assigned_vehicle
+  end
 end

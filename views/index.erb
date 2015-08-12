@@ -3,7 +3,21 @@
   <div class="bk-vehicles-list">
     <ul>
       <% @vehicles.each do |vehicle| %>
-        <li class="bk-vehicle"><%= vehicle.year() %> <%= vehicle.make() %> <%= vehicle.model() %></li>
+        <li class="bk-vehicle"><%= vehicle.year() %> <%= vehicle.make() %> <%= vehicle.model() %> (<%= vehicle.color() %>) -
+          <% if vehicle.dealer_assigned() %>
+            <%= vehicle.dealership() %>
+          <% else %>
+            <form class="bk-assign-vehicle" action="/assign_vehicle/<%= vehicle.id %>" method="post">
+              <select onChange="this.form.submit()" name="dealership_id">
+                <option value="" disabled="disabled" selected="selected">Add to Dealership</option>
+                <% @dealerships.each do |dealership| %>
+                  <option value="<%= dealership.id() %>"><%= dealership.name() %></option>
+                <% end %>
+              </select>
+            </form>
+          <% end %>
+          - <a href='/remove_vehicle/<%= vehicle.id() %>'>Vehicle has sold</a>
+        </li>
       <% end %>
     </ul>
   </div>
